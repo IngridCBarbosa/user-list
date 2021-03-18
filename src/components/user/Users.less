@@ -1,17 +1,21 @@
 @import '../../assets/less/antd/theme.less';
 
 .users {
-  min-height: calc(100vh - @layout-header-height - 48px);
+  padding: 24px;
 
-  .ant-list-item {
-    padding: 12px 24px;
+  .ant-row {
+    min-height: calc(100vh - @layout-header-height - 48px);
   }
 
   &.md {
-    min-height: calc(100vh - @layout-header-height - 124px);
+    padding: 62px;
 
-    .ant-list-item {
-      padding: 8px 0;
+    .ant-row {
+      min-height: calc(100vh - @layout-header-height - 124px);
+
+      .ant-list-item {
+        padding: 8px 0;
+      }
     }
   }
 }

@@ -7,8 +7,6 @@ import {
   Layout,
 } from 'antd';
 
-import './Content.less';
-
 export interface IContentProps {
   children: React.ReactNode;
 }

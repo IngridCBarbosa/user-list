@@ -3,6 +3,10 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 import {
+  useHistory,
+} from 'react-router-dom';
+
+import {
   useDispatch,
   useSelector,
 } from 'react-redux';
@@ -32,6 +36,7 @@ import UserProfileDrawer from './UserProfileDrawer';
 import './Users.less';
 
 const Users: React.FC = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const breakpoints = Grid.useBreakpoint();
 
@@ -40,6 +45,14 @@ const Users: React.FC = () => {
   React.useEffect(() => {
     dispatch(getUsers(50));
   }, [dispatch]);
+
+  const handleUserClick = (userID: string) => {
+    if (breakpoints.md) {
+      updateSelectedUserID(userID);
+    } else {
+      history.push(`/user/${userID}`);
+    }
+  };
 
   const getUsersState = useSelector<IAppState, IGetUsersState>((state) => state.user.getUsers);
 
@@ -62,7 +75,7 @@ const Users: React.FC = () => {
             >
               <UserCard
                 user={user}
-                onClick={updateSelectedUserID}
+                onClick={handleUserClick}
               />
             </Col>
           ))}

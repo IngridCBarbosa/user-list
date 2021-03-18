@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import classNames from 'classnames';
+
+import {
+  Grid,
+  Layout,
+} from 'antd';
+
+import Header from './components/layout/Header';
+import Content from './components/layout/Content';
+
+export interface IAppProps {
+  children: React.ReactNode;
 }
+
+const App: React.FC<IAppProps> = ({ children }) => {
+  const breakpoints = Grid.useBreakpoint();
+
+  const appClassNames = classNames('app', {
+    md: breakpoints.md,
+  });
+
+  return (
+    <Layout className={appClassNames}>
+      <Header />
+      <Content>
+        {children}
+      </Content>
+    </Layout>
+  );
+};
 
 export default App;

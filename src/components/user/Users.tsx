@@ -18,6 +18,8 @@ import {
   Spin,
 } from 'antd';
 
+import { LoadingOutlined } from '@ant-design/icons';
+
 import {
   IAppState,
 } from '../../store/appState';
@@ -60,9 +62,11 @@ const Users: React.FC = () => {
     md: breakpoints.md,
   });
 
+  const antIcon = <LoadingOutlined style={{ fontSize: 40, color: '#1C1C1C' }} spin />;
+
   return (
     <div className={usersClassNames}>
-      <Spin spinning={getUsersState.loading}>
+      <Spin indicator={antIcon} spinning={getUsersState.loading}>
         <Row gutter={[24, 24]}>
           {getUsersState.payload.data.map((user) => (
             <Col

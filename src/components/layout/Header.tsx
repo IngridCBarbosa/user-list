@@ -7,7 +7,7 @@ import {
   Layout,
 } from 'antd';
 
-import logo from '../../assets/img/logo.svg';
+import logo from '../../assets/img/logo-tdc.png';
 
 import './Header.less';
 
@@ -21,6 +21,7 @@ const Header: React.FC = () => {
   return (
     <Layout.Header className={headerClassNames}>
       <img src={logo} className="logo" alt="logo" />
+      <p className="title"> User List </p>
     </Layout.Header>
   );
 };

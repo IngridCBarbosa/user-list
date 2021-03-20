@@ -18,6 +18,8 @@ import {
   Typography,
 } from 'antd';
 
+import { LoadingOutlined } from '@ant-design/icons';
+
 import {
   IAppState,
 } from '../../store/appState';
@@ -59,8 +61,10 @@ const UserProfile: React.FC<IUserProfileProps> = ({ userID }) => {
 
   const userProfile = getUserProfileState.payload;
 
+  const antIcon = <LoadingOutlined style={{ fontSize: 40, color: '#FFF0F5' }} spin />;
+
   return (
-    <Spin spinning={getUserProfileState.loading}>
+    <Spin indicator={antIcon} spinning={getUserProfileState.loading}>
       <div className="user-profile">
         <img className="picture" src={userProfile.picture} alt={userProfile.email} />
         <div className="gradient" />
